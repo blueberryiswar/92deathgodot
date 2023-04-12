@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://dmfwj8buj3soh"]
+
+[ext_resource type="Script" path="res://Utility/experience.gd" id="1_leir3"]
+
+[node name="Experience" type="Node" groups=["levelmanager"]]
+script = ExtResource("1_leir3")

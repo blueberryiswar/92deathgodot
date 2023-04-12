@@ -1,0 +1,367 @@
+[gd_scene load_steps=59 format=3 uid="uid://du1d1cjiajwx0"]
+
+[ext_resource type="Script" path="res://Utility/upgrade_db.gd" id="1_v8bt8"]
+[ext_resource type="Texture2D" uid="uid://be2371yyg7uca" path="res://assets/objects/upgrades/flameshot.png" id="2_44wvg"]
+[ext_resource type="Script" path="res://db/Upgrades/upgrade_level.gd" id="2_jjj1v"]
+[ext_resource type="Script" path="res://db/Upgrades/upgrade_type.gd" id="2_rqt3y"]
+[ext_resource type="Texture2D" uid="uid://bpiyoaf8k6ufa" path="res://assets/objects/upgrades/crit.png" id="5_mq5rm"]
+[ext_resource type="Script" path="res://Utility/level_stats.gd" id="6_j18t4"]
+[ext_resource type="Texture2D" uid="uid://c8gc0ul7g0f6x" path="res://assets/objects/upgrades/tree.png" id="7_4axhc"]
+[ext_resource type="Texture2D" uid="uid://wv253afktxi4" path="res://assets/objects/upgrades/javeline.png" id="8_kly11"]
+[ext_resource type="Texture2D" uid="uid://b62xm4tpbqri1" path="res://assets/objects/upgrades/cooldown.png" id="9_x8yhk"]
+[ext_resource type="Texture2D" uid="uid://bhibnx8tkfftf" path="res://assets/objects/upgrades/heal.png" id="10_us71l"]
+
+[sub_resource type="Resource" id="Resource_f3ihi"]
+script = ExtResource("6_j18t4")
+damage = 5
+canCrit = false
+critChance = 0
+punchTrough = 2
+cooldown = 1.0
+projectiles = 1
+
+[sub_resource type="Resource" id="Resource_4oeqb"]
+script = ExtResource("2_jjj1v")
+level = 2
+description = "Adds punchtrough to shots"
+stats = SubResource("Resource_f3ihi")
+
+[sub_resource type="Resource" id="Resource_v3m0w"]
+script = ExtResource("6_j18t4")
+damage = 10
+canCrit = false
+critChance = 0
+punchTrough = 2
+cooldown = 1.0
+projectiles = 1
+
+[sub_resource type="Resource" id="Resource_c2kyg"]
+script = ExtResource("2_jjj1v")
+level = 3
+description = "Increases base damage by 5"
+stats = SubResource("Resource_v3m0w")
+
+[sub_resource type="Resource" id="Resource_vrpep"]
+script = ExtResource("6_j18t4")
+damage = 10
+canCrit = false
+critChance = 10
+punchTrough = 3
+cooldown = 1.0
+projectiles = 1
+
+[sub_resource type="Resource" id="Resource_3ihk7"]
+script = ExtResource("2_jjj1v")
+level = 4
+description = "More punchtrough"
+stats = SubResource("Resource_vrpep")
+
+[sub_resource type="Resource" id="Resource_br6ek"]
+script = ExtResource("6_j18t4")
+damage = 20
+canCrit = false
+critChance = 10
+punchTrough = 3
+cooldown = 1.0
+projectiles = 1
+
+[sub_resource type="Resource" id="Resource_i6kfl"]
+script = ExtResource("2_jjj1v")
+level = 5
+description = "Increase base damage by 10"
+stats = SubResource("Resource_br6ek")
+
+[sub_resource type="Resource" id="Resource_otofb"]
+script = ExtResource("6_j18t4")
+damage = 20
+canCrit = false
+critChance = 0
+punchTrough = 3
+cooldown = 0.8
+projectiles = 1
+
+[sub_resource type="Resource" id="Resource_4hprb"]
+script = ExtResource("2_jjj1v")
+level = 6
+description = "Shortened cooldown between shots"
+stats = SubResource("Resource_otofb")
+
+[sub_resource type="Resource" id="Resource_1kma8"]
+script = ExtResource("6_j18t4")
+damage = 30
+canCrit = false
+critChance = 0
+punchTrough = 3
+cooldown = 0.8
+projectiles = 1
+
+[sub_resource type="Resource" id="Resource_n7no4"]
+script = ExtResource("2_jjj1v")
+level = 7
+description = "+10 Basedamage"
+stats = SubResource("Resource_1kma8")
+
+[sub_resource type="Resource" id="Resource_43v0d"]
+script = ExtResource("6_j18t4")
+damage = 30
+canCrit = false
+critChance = 0
+punchTrough = 99
+cooldown = 0.8
+projectiles = 1
+
+[sub_resource type="Resource" id="Resource_8kvjs"]
+script = ExtResource("2_jjj1v")
+level = 8
+description = "Limitless Punchtrough"
+stats = SubResource("Resource_43v0d")
+
+[sub_resource type="Resource" id="Resource_hv371"]
+script = ExtResource("2_rqt3y")
+name = "Flameshot"
+image = ExtResource("2_44wvg")
+levels = Array[ExtResource("2_jjj1v")]([SubResource("Resource_4oeqb"), SubResource("Resource_c2kyg"), SubResource("Resource_3ihk7"), SubResource("Resource_i6kfl"), SubResource("Resource_4hprb"), SubResource("Resource_n7no4"), SubResource("Resource_8kvjs")])
+
+[sub_resource type="Resource" id="Resource_li4sa"]
+script = ExtResource("6_j18t4")
+damage = 0
+canCrit = true
+critChance = 10
+punchTrough = 0
+cooldown = 0.0
+projectiles = 0
+
+[sub_resource type="Resource" id="Resource_vj6um"]
+script = ExtResource("2_jjj1v")
+level = 1
+description = "Gives chance to crit"
+stats = SubResource("Resource_li4sa")
+
+[sub_resource type="Resource" id="Resource_c8s7j"]
+script = ExtResource("6_j18t4")
+damage = 0
+canCrit = true
+critChance = 20
+punchTrough = 0
+cooldown = 0.0
+projectiles = 0
+
+[sub_resource type="Resource" id="Resource_m03ps"]
+script = ExtResource("2_jjj1v")
+level = 2
+description = "Increases Critical Chance by 10%"
+stats = SubResource("Resource_c8s7j")
+
+[sub_resource type="Resource" id="Resource_4ww2d"]
+script = ExtResource("6_j18t4")
+damage = 0
+canCrit = true
+critChance = 30
+punchTrough = 0
+cooldown = 0.0
+projectiles = 0
+
+[sub_resource type="Resource" id="Resource_rdjnc"]
+script = ExtResource("2_jjj1v")
+level = 3
+description = "Increases Critical Chance by 10%"
+stats = SubResource("Resource_4ww2d")
+
+[sub_resource type="Resource" id="Resource_6pouv"]
+script = ExtResource("6_j18t4")
+damage = 0
+canCrit = true
+critChance = 40
+punchTrough = 0
+cooldown = 0.0
+projectiles = 0
+
+[sub_resource type="Resource" id="Resource_h510b"]
+script = ExtResource("2_jjj1v")
+level = 4
+description = "Increases Critical Chance by 10%"
+stats = SubResource("Resource_6pouv")
+
+[sub_resource type="Resource" id="Resource_tc54l"]
+script = ExtResource("6_j18t4")
+damage = 0
+canCrit = true
+critChance = 50
+punchTrough = 0
+cooldown = 0.0
+projectiles = 0
+
+[sub_resource type="Resource" id="Resource_f7w8n"]
+script = ExtResource("2_jjj1v")
+level = 5
+description = "Increases Critical Chance by 10%"
+stats = SubResource("Resource_tc54l")
+
+[sub_resource type="Resource" id="Resource_yyhac"]
+script = ExtResource("6_j18t4")
+damage = 0
+canCrit = true
+critChance = 60
+punchTrough = 1
+cooldown = 1.0
+projectiles = 1
+
+[sub_resource type="Resource" id="Resource_4w625"]
+script = ExtResource("2_jjj1v")
+level = 6
+description = "Increases Critical Chance by 10%"
+stats = SubResource("Resource_yyhac")
+
+[sub_resource type="Resource" id="Resource_utj3i"]
+script = ExtResource("6_j18t4")
+damage = 0
+canCrit = true
+critChance = 70
+punchTrough = 0
+cooldown = 0.0
+projectiles = 0
+
+[sub_resource type="Resource" id="Resource_8h8uj"]
+script = ExtResource("2_jjj1v")
+level = 7
+description = "Increases Critical Chance by 10%"
+stats = SubResource("Resource_utj3i")
+
+[sub_resource type="Resource" id="Resource_dbbfl"]
+script = ExtResource("6_j18t4")
+damage = 0
+canCrit = true
+critChance = 80
+punchTrough = 0
+cooldown = 0.0
+projectiles = 0
+
+[sub_resource type="Resource" id="Resource_qn0p5"]
+script = ExtResource("2_jjj1v")
+level = 8
+description = "Increases Critical Chance by 10%"
+stats = SubResource("Resource_dbbfl")
+
+[sub_resource type="Resource" id="Resource_xjapo"]
+script = ExtResource("6_j18t4")
+damage = 0
+canCrit = true
+critChance = 90
+punchTrough = 0
+cooldown = 0.0
+projectiles = 0
+
+[sub_resource type="Resource" id="Resource_x2hdn"]
+script = ExtResource("2_jjj1v")
+level = 9
+description = "Increases Critical Chance by 10%"
+stats = SubResource("Resource_xjapo")
+
+[sub_resource type="Resource" id="Resource_ugcti"]
+script = ExtResource("6_j18t4")
+damage = 0
+canCrit = true
+critChance = 100
+punchTrough = 0
+cooldown = 0.0
+projectiles = 0
+
+[sub_resource type="Resource" id="Resource_dhueb"]
+script = ExtResource("2_jjj1v")
+level = 10
+description = "Increases Critical Chance by 10%"
+stats = SubResource("Resource_ugcti")
+
+[sub_resource type="Resource" id="Resource_hbtf8"]
+script = ExtResource("2_rqt3y")
+name = "Critical"
+image = ExtResource("5_mq5rm")
+levels = Array[ExtResource("2_jjj1v")]([SubResource("Resource_vj6um"), SubResource("Resource_m03ps"), SubResource("Resource_rdjnc"), SubResource("Resource_h510b"), SubResource("Resource_f7w8n"), SubResource("Resource_4w625"), SubResource("Resource_8h8uj"), SubResource("Resource_qn0p5"), SubResource("Resource_x2hdn"), SubResource("Resource_dhueb")])
+
+[sub_resource type="Resource" id="Resource_r5eg2"]
+script = ExtResource("6_j18t4")
+damage = 15
+canCrit = false
+critChance = 0
+punchTrough = 1
+cooldown = 1.0
+projectiles = 1
+
+[sub_resource type="Resource" id="Resource_rbs3e"]
+script = ExtResource("2_jjj1v")
+level = 1
+description = "Spawns a tree that attacks enemies"
+stats = SubResource("Resource_r5eg2")
+
+[sub_resource type="Resource" id="Resource_mtw52"]
+script = ExtResource("2_rqt3y")
+name = "Ghastly Tree"
+image = ExtResource("7_4axhc")
+levels = Array[ExtResource("2_jjj1v")]([SubResource("Resource_rbs3e")])
+
+[sub_resource type="Resource" id="Resource_bsix5"]
+script = ExtResource("6_j18t4")
+damage = 20
+canCrit = false
+critChance = 0
+punchTrough = 1
+cooldown = 1.0
+projectiles = 1
+
+[sub_resource type="Resource" id="Resource_0g52p"]
+script = ExtResource("2_jjj1v")
+level = 1
+description = "Spawns a javeline that attacks nearby enemy"
+stats = SubResource("Resource_bsix5")
+
+[sub_resource type="Resource" id="Resource_tebyp"]
+script = ExtResource("2_rqt3y")
+name = "Javeline"
+image = ExtResource("8_kly11")
+levels = Array[ExtResource("2_jjj1v")]([SubResource("Resource_0g52p")])
+
+[sub_resource type="Resource" id="Resource_02o4j"]
+script = ExtResource("6_j18t4")
+damage = 0
+canCrit = false
+critChance = 0
+punchTrough = 0
+cooldown = 0.9
+projectiles = 0
+
+[sub_resource type="Resource" id="Resource_prl7j"]
+script = ExtResource("2_jjj1v")
+level = 1
+description = "Reduce cooldown by 10%"
+stats = SubResource("Resource_02o4j")
+
+[sub_resource type="Resource" id="Resource_62pty"]
+script = ExtResource("2_rqt3y")
+name = "Cooldown"
+image = ExtResource("9_x8yhk")
+levels = Array[ExtResource("2_jjj1v")]([SubResource("Resource_prl7j")])
+
+[sub_resource type="Resource" id="Resource_j0bnm"]
+script = ExtResource("6_j18t4")
+damage = 0
+canCrit = false
+critChance = 0
+punchTrough = 1
+cooldown = 1.0
+projectiles = 1
+
+[sub_resource type="Resource" id="Resource_fkavo"]
+script = ExtResource("2_jjj1v")
+level = 1
+description = "Heals player by 1hp/s"
+stats = SubResource("Resource_j0bnm")
+
+[sub_resource type="Resource" id="Resource_vdlxx"]
+script = ExtResource("2_rqt3y")
+name = "Heal"
+image = ExtResource("10_us71l")
+levels = Array[ExtResource("2_jjj1v")]([SubResource("Resource_fkavo")])
+
+[node name="UpgradeDB" type="Node"]
+script = ExtResource("1_v8bt8")
+upgrades = Array[ExtResource("2_rqt3y")]([SubResource("Resource_hv371"), SubResource("Resource_hbtf8"), SubResource("Resource_mtw52"), SubResource("Resource_tebyp"), SubResource("Resource_62pty"), SubResource("Resource_vdlxx")])

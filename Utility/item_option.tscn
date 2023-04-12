@@ -1,0 +1,54 @@
+[gd_scene load_steps=2 format=3 uid="uid://xr7n4gi7hvqn"]
+
+[ext_resource type="Script" path="res://Utility/item_option.gd" id="1_rx2pe"]
+
+[node name="ItemOption" type="ColorRect"]
+custom_minimum_size = Vector2(360, 200)
+offset_right = 360.0
+offset_bottom = 100.0
+color = Color(0.376471, 0.376471, 0.513726, 1)
+script = ExtResource("1_rx2pe")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 0
+offset_left = 10.0
+offset_top = 10.0
+offset_right = 90.0
+offset_bottom = 90.0
+color = Color(0, 0, 0, 1)
+
+[node name="TextureRect" type="TextureRect" parent="ColorRect"]
+layout_mode = 0
+offset_left = 5.0
+offset_top = 5.0
+offset_right = 75.0
+offset_bottom = 75.0
+stretch_mode = 5
+
+[node name="LabelName" type="Label" parent="."]
+layout_mode = 0
+offset_left = 100.0
+offset_top = 10.0
+offset_right = 350.0
+offset_bottom = 33.0
+text = "Name"
+
+[node name="LabelDesc" type="Label" parent="."]
+clip_contents = true
+layout_mode = 0
+offset_left = 100.0
+offset_top = 40.0
+offset_right = 350.0
+offset_bottom = 190.0
+text = "Lots of Boom"
+
+[node name="LabelLevel" type="Label" parent="."]
+layout_mode = 0
+offset_left = 11.0
+offset_top = 94.0
+offset_right = 89.0
+offset_bottom = 166.0
+text = "Lvl 1"
+
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]

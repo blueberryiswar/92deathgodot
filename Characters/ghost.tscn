@@ -1,0 +1,67 @@
+[gd_scene load_steps=10 format=3 uid="uid://cja0vyym34vr0"]
+
+[ext_resource type="Texture2D" uid="uid://o6mjjs2kifwi" path="res://assets/characters/ghost.png" id="1_tugqg"]
+[ext_resource type="Script" path="res://Characters/ghost.gd" id="1_y7j7o"]
+[ext_resource type="Shader" path="res://Characters/flash.gdshader" id="2_xe4b2"]
+[ext_resource type="PackedScene" uid="uid://c0etp0qos8kgq" path="res://Utility/my_hit_box.tscn" id="3_swqtb"]
+[ext_resource type="PackedScene" uid="uid://cxpvrtlh8044s" path="res://Utility/my_hurt_box.tscn" id="4_p1n56"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_h086h"]
+resource_local_to_scene = true
+shader = ExtResource("2_xe4b2")
+shader_parameter/flash_color = Color(1, 1, 1, 1)
+shader_parameter/modifier = 0.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_2ohmi"]
+radius = 5.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_51gcm"]
+radius = 5.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_x8inb"]
+radius = 10.0499
+
+[node name="Ghost" type="CharacterBody2D" groups=["enemy"]]
+y_sort_enabled = true
+collision_layer = 6
+collision_mask = 6
+script = ExtResource("1_y7j7o")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_h086h")
+texture = ExtResource("1_tugqg")
+hframes = 4
+vframes = 5
+frame = 12
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-1, -2)
+shape = SubResource("CircleShape2D_2ohmi")
+
+[node name="MyHitBox" parent="." instance=ExtResource("3_swqtb")]
+damage = 5
+
+[node name="CollisionShape2D" parent="MyHitBox" index="0"]
+position = Vector2(0, -2)
+shape = SubResource("CircleShape2D_51gcm")
+
+[node name="MyHurtBox" parent="." instance=ExtResource("4_p1n56")]
+my_mask = 3
+
+[node name="CollisionShape2D" parent="MyHurtBox" index="0"]
+position = Vector2(0, -2)
+shape = SubResource("CircleShape2D_x8inb")
+
+[node name="FlashTimer" type="Timer" parent="."]
+wait_time = 0.1
+one_shot = true
+
+[node name="DeathTimer" type="Timer" parent="."]
+one_shot = true
+
+[connection signal="take_damage" from="MyHurtBox" to="." method="_on_my_hurt_box_take_damage"]
+[connection signal="timeout" from="FlashTimer" to="." method="_on_flash_timer_timeout"]
+[connection signal="timeout" from="DeathTimer" to="." method="_on_death_timer_timeout"]
+
+[editable path="MyHitBox"]
+[editable path="MyHurtBox"]

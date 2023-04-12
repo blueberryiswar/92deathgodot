@@ -1,0 +1,25 @@
+[gd_scene load_steps=5 format=3 uid="uid://1y2vwv4424lv"]
+
+[ext_resource type="Texture2D" uid="uid://daxll716xqij4" path="res://assets/objects/experience.png" id="1_enmwu"]
+[ext_resource type="Script" path="res://Objects/experience_orb.gd" id="1_nsq3p"]
+[ext_resource type="AudioStream" uid="uid://bmhl36p1ft3i8" path="res://assets/soundeffect/pickup.wav" id="3_10auc"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_mshqx"]
+radius = 6.0
+
+[node name="ExperienceOrb" type="Area2D" groups=["loot"]]
+collision_layer = 8
+collision_mask = 8
+script = ExtResource("1_nsq3p")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_enmwu")
+hframes = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_mshqx")
+
+[node name="snd_collected" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_10auc")
+
+[connection signal="finished" from="snd_collected" to="." method="_on_snd_collected_finished"]

@@ -1,0 +1,23 @@
+[gd_scene load_steps=5 format=3 uid="uid://stv617fvkewv"]
+
+[ext_resource type="Script" path="res://Utility/enemy_spawner.gd" id="1_mpjl4"]
+[ext_resource type="Script" path="res://Characters/ghost.gd" id="2_ya7nd"]
+[ext_resource type="Script" path="res://Utility/spawn_info.gd" id="3_jbjv6"]
+
+[sub_resource type="Resource" id="Resource_2o5vc"]
+script = ExtResource("3_jbjv6")
+time_start = 5
+time_end = 60
+enemy = ExtResource("2_ya7nd")
+enemy_num = 8
+enemy_spawm_delay = 0
+
+[node name="EnemySpawner" type="Node2D"]
+y_sort_enabled = true
+script = ExtResource("1_mpjl4")
+spawns = Array[ExtResource("3_jbjv6")]([SubResource("Resource_2o5vc")])
+
+[node name="Timer" type="Timer" parent="."]
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
